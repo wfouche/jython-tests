@@ -1,7 +1,5 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 
-//DEPS io.leego:banana:2.1.0
-//DEPS org.python:jython-standalone:2.7.4
 //JAVA 21
 
 import java.io.*;
