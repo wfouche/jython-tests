@@ -55,8 +55,6 @@ public class __CLASSNAME__ {
 
 """
 
-javaLines = []
-
 def main():
     scriptFilename = sys.argv[1]
     javaClassname = os.path.basename(scriptFilename)[:-3] + "_py"
@@ -81,7 +79,6 @@ def main():
             if len(line) > len(tag3):
                 if line[:len(tag3)] == tag3:
                     javaVersion = line.split()[1]
-            javaLines.append("#" + line)
 
     dep = "org.python:jython-standalone:" + jythonVersion
     deps.append(dep)
