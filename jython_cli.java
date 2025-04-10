@@ -8,7 +8,7 @@ import java.util.*;
 
 public class jython_cli {
     private static final String text = """
-            //import org.python.util.jython;
+            // import org.python.util.jython;
             import org.python.util.PythonInterpreter;
             import java.util.Base64;
             
@@ -93,10 +93,12 @@ public class jython_cli {
 
         try (BufferedWriter jf = new BufferedWriter(new FileWriter(javaFilename))) {
             jf.write("///usr/bin/env jbang \"$0\" \"$@\" ; exit $?" + System.lineSeparator() + System.lineSeparator());
+            jf.write("// spotless:off" + System.lineSeparator());
             for (String dependency : deps) {
                 jf.write("//DEPS " + dependency + System.lineSeparator());
             }
             jf.write("//JAVA " + javaVersion + System.lineSeparator());
+            jf.write("// spotless:on" + System.lineSeparator() + System.lineSeparator());
             String jtext = text.replace("__CLASSNAME__", javaClassname)
                                .replace("__MAIN_SCRIPT__", scriptFileTextB64)
                                .replace("__MAIN_SCRIPT_FILENAME__", scriptFilename);

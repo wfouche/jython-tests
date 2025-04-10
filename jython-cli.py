@@ -4,7 +4,7 @@ import sys
 import base64
 
 text = """
-//import org.python.util.jython;
+// import org.python.util.jython;
 import org.python.util.PythonInterpreter;
 import java.util.Base64;
 
@@ -88,10 +88,13 @@ def main():
 
     jf = open(javaFilename,"w+")
     jf.write('///usr/bin/env jbang "$0" "$@" ; exit $?' + "\n\n")
+    jf.write('// spotless:off\n')
     for dep in deps:
         jf.write("//DEPS " + dep + "\n")
         #print(dep)
     jf.write("//JAVA " + javaVersion + "\n")
+    jf.write('// spotless:on\n')
+
     jtext = text.replace("__CLASSNAME__",javaClassname)
     jtext = jtext.replace("__MAIN_SCRIPT__", scriptFileTextB64)
     jtext = jtext.replace("__MAIN_SCRIPT_FILENAME__", scriptFilename)
