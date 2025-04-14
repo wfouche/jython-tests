@@ -1,4 +1,4 @@
-#!/usr/bin/env ./jython-cli.py
+#!/usr/bin/env ./jython-run.py
 from __future__ import print_function
 import sys
 
