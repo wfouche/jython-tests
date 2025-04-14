@@ -16,7 +16,7 @@ import java.lang.String as String
 def main():
     restClient = RestClient.create()
 
-    rsp = restClient.get().uri("https://jsonplaceholder.typicode.com/posts/{id}", 1).retrieve().body(String)
+    rsp = restClient.get().uri("https://jsonplaceholder.typicode.com/todos/{id}", 1).retrieve().body(String)
 
     print(rsp)
 
