@@ -83,9 +83,9 @@ def main():
 
     data = open(scriptFilename,"r").read()
     metadata = readMetadata(data)
-    print("")
-    pprint.pp(metadata)
-    print("")
+    #print("")
+    #pprint.pp(metadata)
+    #print("")
     deps = []
     jythonVersion = "2.7.4"
     javaVersion = "21"
