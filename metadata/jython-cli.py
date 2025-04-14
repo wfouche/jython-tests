@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from __future__ import print_function
 import os
 import sys
@@ -78,7 +79,7 @@ public class __CLASSNAME__ {
 def main():
     scriptFilename = sys.argv[1]
     javaClassname = os.path.basename(scriptFilename)[:-3] + "_py"
-    javaFilename = scriptFilename.replace(".","_") + ".java"
+    javaFilename = os.path.basename(scriptFilename).replace(".","_") + ".java"
 
     data = open(scriptFilename,"r").read()
     metadata = readMetadata(data)
@@ -126,5 +127,5 @@ def main():
             params += " "
         params += e
     os.system("jbang run " + javaFilename + " " + params)
-
+    os.unlink(javaFilename)
 main()
