@@ -7,6 +7,9 @@
 # dependencies = [
 #   "org.springframework.boot:spring-boot-starter-web:3.4.4",
 # ]
+# [graalpy]
+# emulateJython = true
+# allowAllAccess = true
 # ///
 
 import java.lang.String as String

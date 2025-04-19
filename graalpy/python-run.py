@@ -102,7 +102,7 @@ public class __CLASSNAME__ {
             mainScript = text;
         }
         {
-            try (var context = Context.newBuilder().option("python.EmulateJython", "true").allowAllAccess(true).build()) {
+            try (var context = Context.newBuilder().option("python.EmulateJython", "__JYTHON__").allowAllAccess(__ACCESS__).build()) {
                 Source sourceArgs = Source.create("python", pythonArgsScript);
                 Source sourceMain = Source.create("python", mainScript);
                 // Value result = context.eval("python", "import site");
@@ -176,6 +176,19 @@ def main():
     jtext = jtext.replace("__CLASSNAME__",javaClassname)
     jtext = jtext.replace("__MAIN_SCRIPT__", scriptFileTextB64)
     jtext = jtext.replace("__MAIN_SCRIPT_FILENAME__", scriptFilename)
+
+    emulateJython = metadata.get('graalpy', {}).get('emulateJython', "false")
+    if emulateJython:
+        jtext = jtext.replace("__JYTHON__", "true")
+    else:
+        jtext = jtext.replace("__JYTHON__", "false")
+
+    allowAllAccess = metadata.get('graalpy', {}).get('allowAllAccess', "false")
+    if allowAllAccess:
+        jtext = jtext.replace("__ACCESS__", "true")
+    else:
+        jtext = jtext.replace("__ACCESS__", "false")
+
     jf.write(jtext)
     jf.close()
     #print(sys.argv[1:])
