@@ -8,7 +8,7 @@ import java.net.http.HttpRequest as HttpRequest
 import java.net.http.HttpResponse as HttpResponse
 import java.net.URI as URI
 
-# /// script
+# /// jbang
 # requires-graalpy = ">=24.2.1"
 # requires-java = ">=21"
 # ///

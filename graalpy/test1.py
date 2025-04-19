@@ -8,7 +8,7 @@ import java.net.http.HttpRequest as HttpRequest
 import java.net.http.HttpResponse as HttpResponse
 import java.net.URI as URI
 
-# /// script
+# /// jbang
 # requires-jython = ">=2.7.4"
 # requires-java = ">=21"
 # ///
