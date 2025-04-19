@@ -3,10 +3,23 @@ import json
 import sys
 import platform
 
+import java.net.http.HttpClient as HttpClient
+import java.net.http.HttpRequest as HttpRequest
+import java.net.http.HttpResponse as HttpResponse
+import java.net.URI as URI
+
 # /// script
 # requires-graalpy = ">=24.2.1"
 # requires-java = ">=21"
 # ///
+
+def httpclient():
+    print("httpclient:")
+    uri = "https://jsonplaceholder.typicode.com/todos/1"
+    client = HttpClient.newHttpClient()
+    request = HttpRequest.newBuilder().uri(URI.create(uri)).build()
+    response = client.send(request, HttpResponse.BodyHandlers.ofString())
+    print(response.body())
 
 def main():
     print("version:", platform.python_version())
@@ -14,5 +27,6 @@ def main():
     text = '{"k1": "v1", "k2": "v2", "k3": "v3"}'
     jobj = json.loads(text)
     print(jobj["k2"])
+    httpclient()
 
 main()
