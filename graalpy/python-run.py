@@ -105,6 +105,7 @@ public class __CLASSNAME__ {
             try (var context = Context.newBuilder().allowAllAccess(true).build()) {
                 Source sourceArgs = Source.create("python", pythonArgsScript);
                 Source sourceMain = Source.create("python", mainScript);
+                // Value result = context.eval("python", "import site");
                 Value result = context.eval(sourceArgs);
                 result = context.eval(sourceMain);
                 //System.out.println(context.eval("python", "'Hello Python!'").asString());
