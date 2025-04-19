@@ -1,5 +1,5 @@
 #!/usr/bin/env ./python-run.py
-# restclient.py
+# restclient_jython.py
 
 # /// jbang
 # requires-jython = "==2.7.4"
