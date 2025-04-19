@@ -9,9 +9,8 @@
 # ]
 # ///
 
-import java
 import java.lang.String as String
-RestClient = java.type('org.springframework.web.client.RestClient')
+import org.springframework.web.client.RestClient as RestClient
 
 def restApiCall(uri: str, id: int):
     restClient = RestClient.create()

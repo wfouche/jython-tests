@@ -102,7 +102,7 @@ public class __CLASSNAME__ {
             mainScript = text;
         }
         {
-            try (var context = Context.newBuilder().allowAllAccess(true).build()) {
+            try (var context = Context.newBuilder().option("python.EmulateJython", "true").allowAllAccess(true).build()) {
                 Source sourceArgs = Source.create("python", pythonArgsScript);
                 Source sourceMain = Source.create("python", mainScript);
                 // Value result = context.eval("python", "import site");

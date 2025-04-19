@@ -9,7 +9,6 @@
 # ]
 # ///
 
-import java
 import java.lang.String as String
 import org.springframework.web.client.RestClient as RestClient
 
