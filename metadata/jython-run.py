@@ -10,7 +10,7 @@ import tomllib
 REGEX = r'(?m)^# /// (?P<type>[a-zA-Z0-9-]+)$\s(?P<content>(^#(| .*)$\s)+)^# ///$'
 
 def readMetadata(script: str) -> dict | None:
-    name = 'script'
+    name = 'jbang'
     matches = list(
         filter(lambda m: m.group('type') == name, re.finditer(REGEX, script))
     )

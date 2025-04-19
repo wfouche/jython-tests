@@ -2,7 +2,7 @@
 # restclient.py
 from __future__ import print_function
 
-# /// script
+# /// jbang
 # requires-jython = ">=2.7.4"
 # requires-java = ">=21"
 # dependencies = [
