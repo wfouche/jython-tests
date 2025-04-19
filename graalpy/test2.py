@@ -13,9 +13,8 @@ import java.net.URI as URI
 # requires-java = ">=21"
 # ///
 
-def httpclient():
+def httpclient(uri: str):
     print("httpclient:")
-    uri = "https://jsonplaceholder.typicode.com/todos/1"
     client = HttpClient.newHttpClient()
     request = HttpRequest.newBuilder().uri(URI.create(uri)).build()
     response = client.send(request, HttpResponse.BodyHandlers.ofString())
@@ -27,6 +26,6 @@ def main():
     text = '{"k1": "v1", "k2": "v2", "k3": "v3"}'
     jobj = json.loads(text)
     print(jobj["k2"])
-    httpclient()
+    httpclient("https://jsonplaceholder.typicode.com/todos/1")
 
 main()
