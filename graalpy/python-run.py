@@ -110,7 +110,7 @@ public class __CLASSNAME__ {
                 //System.out.println(context.eval("python", "'Hello Python!'").asString());
                 //System.out.println(context.eval("python", "1+1"));
             }
-         }
+        }
     }
 }
 
@@ -185,4 +185,5 @@ def main():
         params += e
     os.system("jbang run " + javaFilename + " " + params)
     #os.unlink(javaFilename)
+
 main()
