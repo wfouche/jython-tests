@@ -114,7 +114,7 @@ public class __CLASSNAME__ {
             // run script
             //pyInterp.exec("__name__=\"\"");
             //pyInterp.exec(mainScript);
-            try (var context = Context.create()) {
+            try (var context = Context.newBuilder().allowAllAccess(true).build()) {
                 Source sourceArgs = Source.create("python", jythonArgsScript);
                 Source sourceMain = Source.create("python", mainScript);
                 Value result = context.eval(sourceArgs);
