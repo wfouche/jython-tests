@@ -118,11 +118,9 @@ public class jython_cli {
             }
             Jash.start(
                 "jbang",
-                commandList
-                    .toArray(new String[0]))
+                commandList.toArray(new String[0]))
                     .stream()
                     .forEach(System.out::println);
-
         }
     }
 }
