@@ -1,10 +1,13 @@
 ///usr/bin/env jbang "$0" "$@" ; exit $?
 
+//DEPS dev.jbang:jash:0.0.1
 //JAVA 21
 
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
+
+import dev.jbang.jash.Jash;
 
 public class jython_cli {
     private static final String text = """
@@ -104,54 +107,22 @@ public class jython_cli {
                                .replace("__MAIN_SCRIPT_FILENAME__", scriptFilename);
             jf.write(jtext);
         }
-
-//        StringBuilder params = new StringBuilder();
-//        for (int i = 1; i < args.length; i++) {
-//            if (params.length() > 0) {
-//                params.append(" ");
-//            }
-//            params.append(args[i]);
-//        }
-//        Runtime.getRuntime().exec("jbang run " + javaFilename + " " + params.toString());
-
+        // Run command
         {
-            List<String> commandList = new ArrayList<>();
+            List<String> commandList = new ArrayList<String>();
 
-            commandList.add("jbang");
             commandList.add("run");
             commandList.add(javaFilename);
             for (int i = 1; i < args.length; i++) {
                 commandList.add(args[i]);
             }
+            Jash.start(
+                "jbang",
+                commandList
+                    .toArray(new String[0]))
+                    .stream()
+                    .forEach(System.out::println);
 
-            try {
-                ProcessBuilder processBuilder = new ProcessBuilder(commandList);
-                //processBuilder.directory(new java.io.File("."));
-
-                Process process = processBuilder.start();
-
-                // Read the output of the process
-                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    System.out.println(line);
-                }
-
-                // Read any error output
-//                BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-//                while ((line = errorReader.readLine()) != null) {
-//                    System.err.println(line);
-//                }
-
-                // Wait for the process to complete
-                int exitCode = process.waitFor();
-                //System.out.println("\nProcess finished with exit code: " + exitCode);
-
-            } catch (IOException e) {
-                System.err.println("Error executing Gradle command: " + e.getMessage());
-            } catch (InterruptedException e) {
-                System.err.println("Process interrupted: " + e.getMessage());
-            }
         }
     }
 }
