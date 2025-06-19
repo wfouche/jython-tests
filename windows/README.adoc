@@ -1,0 +1,126 @@
+= Jython on Windows
+:sectnums:
+
+== Install scoop.sh
+
+. Open a PowerShell terminal session
+
+. Run the following two commands
++
+[source,commandline]
+----
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+----
++
+[source,commandline]
+----
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+----
+
+. Close the PowerShell terminal session
+
+== Install Java 21
+
+. Open a PowerShell terminal session
+
+. Run the following two commands
++
+[source,commandline]
+----
+scoop bucket add java
+----
++
+[source,commandline]
+----
+scoop install openjdk21
+----
+
+. Close the PowerShell terminal session
+
+// == Install WingetUI
+
+// . Open a PowerShell terminal session
+
+// . Run the following two commands
+// +
+// [source,commandline]
+// ----
+// scoop bucket add extras
+// ----
+// +
+// [source,commandline]
+// ----
+// scoop install extras/unigetui
+// ----
+
+// . Close the PowerShell terminal session
+
+== Install JBang
+
+. Open a PowerShell terminal session
+
+. Run the following two commands
++
+[source,commandline]
+----
+scoop bucket add jbangdev https://github.com/jbangdev/scoop-bucket.git
+----
++
+[source,commandline]
+----
+scoop install jbang
+----
++
+[source,commandline]
+----
+jbang version
+----
+
+. Close the PowerShell terminal session
+
+== Test jython-cli
+
+[source,commandline]
+----
+jbang run jython-cli@jython -V
+----
+
+== Example Jython Script
+
+.banner.py
+[source,python]
+----
+# /// jbang
+# requires-jython = "2.7.4"
+# requires-java = "21"
+# dependencies = [
+#   "io.leego:banana:2.1.0"
+# ]
+# runtime-options = [
+#   "-Dpython.console.encoding=UTF-8"
+# ]
+# debug = false
+# ///
+
+import sys
+
+import io.leego.banana.BananaUtils as BananaUtils
+import io.leego.banana.Font as Font
+
+def main():
+    print(sys.argv)
+    #print("sys.stdout.encoding = " + sys.stdout.encoding)
+    #print("sys.stdin.encoding = " + sys.stdin.encoding)
+
+    text0 = "Jython 2.7"
+    text1 = BananaUtils.bananaify(text0, Font.STANDARD)
+
+    print(text1)
+
+main()
+----
+
+[source,commandline]
+----
+jbang run jython-cli@jython banner.py
+----
