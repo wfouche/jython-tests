@@ -27,6 +27,11 @@ Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
 +
 [source,commandline]
 ----
+scoop install git
+----
++
+[source,commandline]
+----
 scoop bucket add java
 ----
 +
