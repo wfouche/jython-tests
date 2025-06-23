@@ -52,8 +52,8 @@ void main() throws IOException, InterruptedException {
 	} while (b != EOF && b != ENTER && running);
 
 	boolean timedOut = !running;
-	_reader.shutdown();
-	terminal.close();
+	//_reader.shutdown();
+	//terminal.close();
 
 	IO.println("Timed out = " + timedOut);
 	IO.println("Line length = " + line.length());
